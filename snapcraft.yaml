@@ -1,0 +1,41 @@
+name: gtk-theme-elementary
+build-base: core24
+base: bare
+version: '8.2.1'
+platforms:
+  all:
+    build-on: [amd64]
+    build-for: [all]
+summary: Elementary OS GTK themes
+description: |
+  A Snap that allows you to use GTK themes of Elementary OS in Snap apps
+grade: stable
+confinement: strict
+compression: lzo
+
+slots:
+  gtk-3-themes:
+    interface: content
+    source:
+      read:
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.banana
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.blueberry
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.bubblegum
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.cocoa
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.grape
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.latte
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.lime
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.mint
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.orange
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.slate
+        - $SNAP/usr/share/themes/io.elementary.stylesheet.strawberry
+parts:
+  gtk-theme-elementary:
+    plugin: meson
+    source: https://github.com/elementary/stylesheet.git
+    source-tag: $SNAPCRAFT_PROJECT_VERSION
+    build-packages: [meson, libsass1, sassc, libgtk-3-dev, libglib2.0-dev, gettext]
+    meson-parameters: [--prefix=/usr]
+    prime:
+      - usr/share/themes/*/gtk-3.0
+      - usr/share/themes/*/gtk-4.0
