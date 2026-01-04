@@ -1,7 +1,7 @@
 name: gtk-theme-elementary
 build-base: core24
 base: bare
-version: '8.2.1'
+version: '8.2.2'
 platforms:
   all:
     build-on: [amd64]
