@@ -1,5 +1,5 @@
 name: gtk-theme-elementary
-build-base: core24
+build-base: core26
 base: bare
 version: '8.2.2'
 platforms:
